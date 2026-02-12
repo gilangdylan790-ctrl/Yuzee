@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Profil Pribadi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    transition:0.5s;
+    overflow:hidden;
+}
+
+body.dark{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.container{
+    width:65%;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    position:relative;
+    z-index:2;
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+body.dark .container{
+    background:#1e1e1e;
+    color:white;
+}
+
+h1{
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:10px;
+}
+
+body.dark h1{
+    color:#4fc3f7;
+}
+
+.typing{
+    text-align:center;
+    font-weight:bold;
+    color:#1565c0;
+    margin-bottom:20px;
+}
+
+.profile-img{
+    display:block;
+    margin:0 auto 20px;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #2196f3;
+    box-shadow:0 0 20px #2196f3;
+    transition:0.4s;
+}
+
+.profile-img:hover{
+    transform:scale(1.1) rotate(5deg);
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+ul li{
+    background:#e3f2fd;
+    margin:10px 0;
+    padding:12px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+ul li:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px #2196f3;
+}
+
+body.dark ul li{
+    background:#2c3e50;
+}
+
+.btn{
+    display:block;
+    width:200px;
+    margin:20px auto;
+    padding:12px;
+    background:linear-gradient(45deg,#1565c0,#42a5f5);
+    color:white;
+    text-align:center;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #42a5f5;
+}
+
+/* Toggle Button */
+.toggle{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#2196f3;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+/* Partikel */
+.particle{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation:move 10s linear infinite;
+}
+
+@keyframes move{
+    from{ transform:translateY(100vh);}
+    to{ transform:translateY(-10vh);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Partikel -->
+<script>
+for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*10)+"s";
+    p.style.width=p.style.height=(5+Math.random()*10)+"px";
+    document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
+
+<div class="toggle" onclick="toggleMode()">Dark Mode</div>
+
+<img src="gilang14.jpg" alt="Foto Profil" class="profile-img">
+
+<h1>Profil Pribadi</h1>
+
+<div class="typing" id="typing"></div>
+
+<h2>Tentang Saya</h2>
+<p>Saya mahasiswa yang sedang belajar membuat website modern dan interaktif.</p>
+
+<h2>Informasi Singkat</h2>
+<ul>
+<li>Nama : Gilang Ananda Siregar</li>
+<li>NIM :25343057</li>
+<li>Prodi : Informatika</li>
+<li>Jurusan : Elektronika</li>
+<li>Fakultas : Teknik</li>
+</ul>
+
+<a href="#" class="btn">Hubungi Saya</a>
+
+</div>
+
+<script>
+/* Dark Mode */
+function toggleMode(){
+    document.body.classList.toggle("dark");
+}
+
+/* Animasi Ketik */
+const text="Mahasiswa Universitas Negeri Padang | Web Developer | UI Enthusiast";
+let i=0;
+function typing(){
+    if(i<text.length){
+        document.getElementById("typing").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typing,80);
+    }
+}
+typing();
+</script>
+
+</body>
+</html>
